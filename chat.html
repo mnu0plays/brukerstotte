@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat-tjeneste</title>
+    <link rel="stylesheet" href="chat.css">
+
+</head>
+<body>
+	<header>
+		<h1>Chat-tjeneste</h1>
+	</header>
+
+	<div id="chat-container">
+		<p>Velkommen til chat-tjenesten! Hvordan kan vi hjelpe deg i dag?</p>
+	</div>
+
+	<div id="chat-input">
+		<input type="text" id="chat-message" placeholder="Skriv melding...">
+		<button id="chat-send">Send</button>
+	</div>
+
+	<script>
+		const chatContainer = document.querySelector('#chat-container');
+		const chatMessage = document.querySelector('#chat-message');
+		const chatSend = document.querySelector('#chat-send');
+
+		chatSend.addEventListener('click', () => {
+			if (chatMessage.value.trim() !== '') {
+				const message = document.createElement('p');
+				message.textContent = chatMessage.value.trim();
+				chatContainer.appendChild(message);
+				chatMessage.value = '';
+			}
+		});
+
+		chatMessage.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter') {
+				event.preventDefault();
+				if (chatMessage.value.trim() !== '') {
+					const message = document.createElement('p');
+					message.textContent = chatMessage.value.trim();
+					chatContainer.appendChild(message);
+					chatMessage.value = '';
+				}
+			}
+		});
+	</script>
+</body>
+</html>
